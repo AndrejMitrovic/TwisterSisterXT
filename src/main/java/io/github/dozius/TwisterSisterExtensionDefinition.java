@@ -35,13 +35,13 @@ public class TwisterSisterExtensionDefinition extends ControllerExtensionDefinit
   @Override
   public String getName()
   {
-    return "Twister Sister";
+    return "Twister Sister XT";
   }
 
   @Override
   public String getAuthor()
   {
-    return "Dan Smith";
+    return "Dan Smith (plus edits by drey)";
   }
 
   @Override

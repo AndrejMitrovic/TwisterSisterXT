@@ -5,9 +5,9 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.dozius</groupId>
-  <artifactId>twister-sister</artifactId>
+  <artifactId>twister-sister-xt</artifactId>
   <packaging>jar</packaging>
-  <name>Twister Sister</name>
+  <name>Twister Sister XT</name>
   <version>2.0.2</version>
 
   <properties>

@@ -25,6 +25,20 @@ import com.bitwig.extension.controller.api.RelativeHardwareControlBinding;
 
 import io.github.dozius.TwisterSisterExtension;
 
+class SensitivitySetting {
+    // Field to store the value
+    private long sensitivity = 0;
+
+    public void toggleNextSensitivity() {
+        this.sensitivity = (this.sensitivity + 1) % 8;
+    }
+
+    // Getter method to retrieve the value
+    public double getValue() {
+        return (1 + this.sensitivity) * 0.5;
+    }
+}
+
 /** A twister knob, including encoder, shift encoder, button and lights. */
 public class TwisterKnob
 {
@@ -37,9 +51,10 @@ public class TwisterKnob
   private final RelativeHardwareKnob shiftKnob;
   private final TwisterRingLight shiftRingLight;
 
-  private boolean isFineSensitivity = false;
-  private double fineSensitivity = 0.25;
-  private double sensitivity = 1.0;
+  private SensitivitySetting sensitivitySetting = new SensitivitySetting();
+//  private boolean isFineSensitivity = false;
+//  private double fineSensitivity = 0.25;
+//  private double sensitivity = 1.0;
 
   /**
    * Creates a new TwisterKnob.
@@ -126,14 +141,14 @@ public class TwisterKnob
    *
    * @param factor The sensitivity factor to apply.
    */
-  public void setSensitivity(double factor)
-  {
-    sensitivity = factor;
-
-    if (!isFineSensitivity) {
-      knob.setSensitivity(sensitivity);
-    }
-  }
+//  public void setSensitivity(double factor)
+//  {
+//    sensitivity = factor;
+//
+//    if (!isFineSensitivity) {
+//      knob.setSensitivity(sensitivity);
+//    }
+//  }
 
   /**
    * Sets the fine sensitivity factor for the knob. If fine sensitivity is active it is applied
@@ -141,20 +156,20 @@ public class TwisterKnob
    *
    * @param factor The sensitivity factor to apply.
    */
-  public void setFineSensitivity(double factor)
-  {
-    fineSensitivity = factor;
-
-    if (isFineSensitivity) {
-      knob.setSensitivity(fineSensitivity);
-    }
-  }
+//  public void setFineSensitivity(double factor)
+//  {
+//    fineSensitivity = factor;
+//
+//    if (isFineSensitivity) {
+//      knob.setSensitivity(fineSensitivity);
+//    }
+//  }
 
   /** Toggles between regular and fine sensitivity. */
   public void toggleSensitivity()
   {
-    isFineSensitivity = !isFineSensitivity;
-    knob.setSensitivity(isFineSensitivity ? fineSensitivity : sensitivity);
+      sensitivitySetting.toggleNextSensitivity();
+      knob.setSensitivity(sensitivitySetting.getValue());
   }
 
   /**

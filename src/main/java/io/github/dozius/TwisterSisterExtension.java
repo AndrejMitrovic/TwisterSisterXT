@@ -204,7 +204,8 @@ public class TwisterSisterExtension extends ControllerExtension
   {
     for (Twister.Bank bank : twister.banks) {
       for (TwisterKnob knob : bank.knobs) {
-        knob.setFineSensitivity(factor);
+          // drey: todo: we can save these settings globally
+//        knob.setFineSensitivity(factor);
       }
     }
   }
